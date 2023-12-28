@@ -1,3 +1,4 @@
+let displayValue;
 let operand1;
 let operand2;
 let operator;
@@ -10,6 +11,8 @@ const operators = document.querySelectorAll('.operator')
 numbers.forEach((button) => {
   button.addEventListener('click', (event) => {
     display.textContent += event.target.textContent;
+    displayValue = display.textContent;
+    console.log(displayValue);
   }); 
 });
 
@@ -17,6 +20,8 @@ numbers.forEach((button) => {
 operators.forEach(operator => {
   operator.addEventListener('click' , (event) => {
     display.textContent += ' ' + event.target.textContent + ' ';
+    displayValue = display.textContent;
+    console.log(displayValue);
   });
 });
 
