@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+button {
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  padding: 0;
+}
+
+#operator {
+  background-color: rgb(63, 63, 63);
+  color: white;
+}
+
+#clear {
+  background-color: rgb(209, 0, 0);
+  color: white;
+}
+#equal {
+  background-color: orange;
+}
+
+p {
+  margin: 0;
+}
+
+#wrapper {
+  padding: 12px;
+  border-radius: 12px;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#display {
+  background-color: white;
+  text-align: right;
+  font-size: 24px;
+  border-radius: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 6px;
+}
