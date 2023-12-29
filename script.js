@@ -27,6 +27,8 @@ operators.forEach(operator => {
 const calculateButton = document.querySelector('#calculate');
 calculateButton.addEventListener('click', (event) => {
   parseOperation(displayValue);
+  solution = operate(operand1, operand2, operator);
+  display.textContent = solution;
 });
 
 function add(a, b) {
@@ -48,7 +50,7 @@ function divide(a, b) {
 function operate(a, b, operator) {
   if (operator === '+') return add(a, b);
   if (operator === '-') return subtract(a, b);
-  if (operator === '*') return multiply(a, b);
+  if (operator === 'x') return multiply(a, b);
   if (operator === '/') return divide(a , b);
 }
 
