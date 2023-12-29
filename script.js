@@ -31,6 +31,13 @@ calculateButton.addEventListener('click', (event) => {
   display.textContent = solution;
 });
 
+// Make clear button interactive
+const clearBtn = document.querySelector('#clear');
+clearBtn.addEventListener('click', () => {
+  displayValue = '';
+  display.textContent = '';
+});
+
 function add(a, b) {
   return a + b;
 }
