@@ -54,6 +54,8 @@ function operate(a, b, operator) {
 
 function parseOperation(displayValue) {
   [operand1, operator, operand2] = displayValue.split(' ');
+  operand1 = Number(operand1);
+  operand2 = Number(operand2);
   console.log(operand1);
   console.log(operator);
   console.log(operand2);
