@@ -4,25 +4,29 @@ let operand2;
 let operator;
 
 const display = document.querySelector('#display');
-const numbers = document.querySelectorAll('.number');
-const operators = document.querySelectorAll('.operator')
 
 // Populate the display when clicked numbers
+const numbers = document.querySelectorAll('.number');
 numbers.forEach((button) => {
   button.addEventListener('click', (event) => {
     display.textContent += event.target.textContent;
     displayValue = display.textContent;
-    console.log(displayValue);
   }); 
 });
 
 // Populate the display when clicked operators
+const operators = document.querySelectorAll('.operator');
 operators.forEach(operator => {
   operator.addEventListener('click' , (event) => {
     display.textContent += ' ' + event.target.textContent + ' ';
     displayValue = display.textContent;
-    console.log(displayValue);
   });
+});
+
+// Make the calculator work
+const calculateButton = document.querySelector('#calculate');
+calculateButton.addEventListener('click', (event) => {
+  parseOperation(displayValue);
 });
 
 function add(a, b) {
@@ -47,3 +51,11 @@ function operate(a, b, operator) {
   if (operator === '*') return multiply(a, b);
   if (operator === '/') return divide(a , b);
 }
+
+function parseOperation(displayValue) {
+  [operand1, operator, operand2] = displayValue.split(' ');
+  console.log(operand1);
+  console.log(operator);
+  console.log(operand2);
+}
+
