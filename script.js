@@ -14,15 +14,6 @@ numbers.forEach((button) => {
   }); 
 });
 
-// Populate the display when clicked operators
-const operators = document.querySelectorAll('.operator');
-operators.forEach(operator => {
-  operator.addEventListener('click' , (event) => {
-    display.textContent += ' ' + event.target.textContent + ' ';
-    displayValue = display.textContent;
-  });
-});
-
 // Make the calculator work
 const calculateButton = document.querySelector('#calculate');
 calculateButton.addEventListener('click', (event) => {
