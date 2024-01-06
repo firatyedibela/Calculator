@@ -8,10 +8,6 @@ const display = document.querySelector('#display');
 let displayValue = '0';
 updateDisplay(displayValue);
 
-function updateDisplay(value) {
-  display.textContent = value;
-}
-
 // Populate the display when clicked numbers
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((button) => {
@@ -22,38 +18,28 @@ numbers.forEach((button) => {
     }
     else {
       displayValue += event.target.textContent;
-      updateDisplay(displayValue)
+      updateDisplay(displayValue);
     }
   }); 
 });
 
-// 
+// If an operator clicked earlier, do the calculation, update the operator to be the new clicked button. So one pair of numbers gets evaluated at a time
 const operators = document.querySelectorAll('.operator');
 operators.forEach(operator => {
-  operator.addEventListener('click', (event) => {
-    if (operation.operand1 && operation.operand2 && operation.operator) {
-      operate(operation.operand1, operation.operand2, operation.operator);
+  operator.addEventListener('click', (event) => { 
+    if (operation.operand1 === null) {
+      operation.operand1 = Number(displayValue);       
     }
-    else if (operation.operand1 === null) {
-      operation.operand1 = display.textContent;
-      operation.operator = event.target.textContent;
-      console.log(operation.operand1);
-      console.log(operation.operator);
+    else if (operation.operator) { 
+      operation.operand2 = Number(displayValue);
+      let result = operate(operation.operand1, operation.operand2, operation.operator);
+      displayValue = result;
+      operation.operand1 = displayValue;
+      updateDisplay(displayValue);
     }
-    else if (operation.operand1 !== null && operation.operand2 === null) {
-      operation.operand2 = display.textContent;
-      console.log(operation.operand2);
-      console.log(operation.operator);
-    }
+    operation.operator = event.target.textContent;   
+    displayValue = '';
   });
-});
-
-// Make the calculator work
-const calculateButton = document.querySelector('#calculate');
-calculateButton.addEventListener('click', (event) => {
-  parseOperation(displayValue);
-  solution = operate(operand1, operand2, operator);
-  display.textContent = solution;
 });
 
 // Make clear button interactive
@@ -93,5 +79,9 @@ function parseOperation(displayValue) {
   console.log(operand1);
   console.log(operator);
   console.log(operand2);
+}
+
+function updateDisplay(value) {
+  display.textContent = value;
 }
 
