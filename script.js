@@ -45,8 +45,9 @@ operators.forEach(operator => {
 // Make clear button interactive
 const clearBtn = document.querySelector('#clear');
 clearBtn.addEventListener('click', () => {
-  displayValue = '';
-  display.textContent = '';
+  displayValue = '0';
+  resetOperation();
+  updateDisplay(displayValue);
 });
 
 function add(a, b) {
@@ -83,5 +84,11 @@ function parseOperation(displayValue) {
 
 function updateDisplay(value) {
   display.textContent = value;
+}
+
+function resetOperation() {
+  for (let key in operation) {
+    operation[key] = null;
+  }
 }
 
