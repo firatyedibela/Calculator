@@ -7,18 +7,31 @@ const operation = {
 }
 
 const display = document.querySelector('#display');
-display.textContent = '0';
+displayValue = '0';
+display.textContent = displayValue;
 
 // Populate the display when clicked numbers
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((button) => {
   button.addEventListener('click', (event) => {
-    display.textContent += event.target.textContent;
-    displayValue = display.textContent;
+    if (display.textContent === '0') {
+      display.textContent = event.target.textContent;
+    }
+    else {
+      display.textContent += event.target.textContent;
+    }
   }); 
 });
 
 // 
+const operators = document.querySelectorAll('.operator');
+operators.forEach(operator => {
+  operator.addEventListener('click', (event) => {
+    if (operation.operand1 === null) {
+      operation.operand1 = displayValue; 
+    }
+  });
+});
 
 // Make the calculator work
 const calculateButton = document.querySelector('#calculate');
