@@ -1,5 +1,3 @@
-let displayValue;
-
 const operation = {
   operand1: null,
   operand2: null,
@@ -7,8 +5,7 @@ const operation = {
 }
 
 const display = document.querySelector('#display');
-displayValue = '0';
-display.textContent = displayValue;
+display.textContent = '0';
 
 // Populate the display when clicked numbers
 const numbers = document.querySelectorAll('.number');
