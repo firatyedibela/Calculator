@@ -1,9 +1,13 @@
 let displayValue;
-let operand1;
-let operand2;
-let operator;
+
+const operation = {
+  operand1: null,
+  operand2: null,
+  operator: null,
+}
 
 const display = document.querySelector('#display');
+display.textContent = '0';
 
 // Populate the display when clicked numbers
 const numbers = document.querySelectorAll('.number');
@@ -13,6 +17,8 @@ numbers.forEach((button) => {
     displayValue = display.textContent;
   }); 
 });
+
+// 
 
 // Make the calculator work
 const calculateButton = document.querySelector('#calculate');
