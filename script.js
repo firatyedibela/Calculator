@@ -5,17 +5,24 @@ const operation = {
 }
 
 const display = document.querySelector('#display');
-display.textContent = '0';
+let displayValue = '0';
+updateDisplay(displayValue);
+
+function updateDisplay(value) {
+  display.textContent = value;
+}
 
 // Populate the display when clicked numbers
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((button) => {
   button.addEventListener('click', (event) => {
-    if (display.textContent === '0') {
-      display.textContent = event.target.textContent;
+    if (displayValue === '0') {
+      displayValue = event.target.textContent;
+      updateDisplay(displayValue);
     }
     else {
-      display.textContent += event.target.textContent;
+      displayValue += event.target.textContent;
+      updateDisplay(displayValue)
     }
   }); 
 });
@@ -24,8 +31,19 @@ numbers.forEach((button) => {
 const operators = document.querySelectorAll('.operator');
 operators.forEach(operator => {
   operator.addEventListener('click', (event) => {
-    if (operation.operand1 === null) {
-      operation.operand1 = displayValue; 
+    if (operation.operand1 && operation.operand2 && operation.operator) {
+      operate(operation.operand1, operation.operand2, operation.operator);
+    }
+    else if (operation.operand1 === null) {
+      operation.operand1 = display.textContent;
+      operation.operator = event.target.textContent;
+      console.log(operation.operand1);
+      console.log(operation.operator);
+    }
+    else if (operation.operand1 !== null && operation.operand2 === null) {
+      operation.operand2 = display.textContent;
+      console.log(operation.operand2);
+      console.log(operation.operator);
     }
   });
 });
