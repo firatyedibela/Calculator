@@ -42,6 +42,15 @@ operators.forEach(operator => {
   });
 });
 
+// Implement calculate button logic
+const calculateBtn = document.querySelector('#calculate');
+calculateBtn.addEventListener('click', () => {
+  let result = operate(operation.operand1, operation.operand2, operation.operator);
+  displayValue = result;
+  updateDisplay(displayValue);
+  operation.operand1 = displayValue;
+});
+
 // Make clear button interactive
 const clearBtn = document.querySelector('#clear');
 clearBtn.addEventListener('click', () => {
@@ -71,15 +80,6 @@ function operate(a, b, operator) {
   if (operator === '-') return subtract(a, b);
   if (operator === 'x') return multiply(a, b);
   if (operator === '/') return divide(a , b);
-}
-
-function parseOperation(displayValue) {
-  [operand1, operator, operand2] = displayValue.split(' ');
-  operand1 = Number(operand1);
-  operand2 = Number(operand2);
-  console.log(operand1);
-  console.log(operator);
-  console.log(operand2);
 }
 
 function updateDisplay(value) {
