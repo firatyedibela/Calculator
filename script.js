@@ -73,6 +73,8 @@ function multiply(a, b) {
 } 
 
 function divide(a, b) {
+  // Handle devide by 0
+  if (b === 0) return 'Are you ok?';
   return a / b;
 }
 
