@@ -10,30 +10,30 @@ body {
 .button-wrapper {
   display: flex;
   flex: 1;
-  gap: 12px;
+  gap: 8px;
 }
 
 button {
   cursor: pointer;
   font-size: 2.8rem;
   font-weight: bold;
-  border-radius: 12px;
+  border-radius: 6px;
   border: none;
   padding: 0;
   flex: 1;
 }
 
-#operator {
-  background-color: rgb(63, 63, 63);
-  color: white;
+.operator {
+  background-color: #FF8F1F;
 }
 
 #clear {
   background-color: rgb(209, 0, 0);
   color: white;
 }
+
 #equal {
-  background-color: orange;
+  background-color: #217C7E;
 }
 
 p {
@@ -46,7 +46,7 @@ p {
   background-color: gray;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   width: 410px;
   height: 510px;  
 }
