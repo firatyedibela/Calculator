@@ -45,6 +45,7 @@ operators.forEach(operator => {
 // Implement calculate button logic
 const calculateBtn = document.querySelector('#calculate');
 calculateBtn.addEventListener('click', () => {
+  operation.operand2 = Number(displayValue);
   let result = operate(operation.operand1, operation.operand2, operation.operator);
   displayValue = result;
   updateDisplay(displayValue);
