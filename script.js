@@ -86,7 +86,13 @@ function operate(a, b, operator) {
 }
 
 function updateDisplay(value) {
-  display.textContent = value;
+  if (!(value < 10**11)) {
+    display.textContent = '...';
+  }
+  else {
+    display.textContent = value;
+  }
+
 }
 
 function resetOperation() {
