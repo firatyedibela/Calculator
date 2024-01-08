@@ -42,9 +42,9 @@ operators.forEach(operator => {
   });
 });
 
-// Implement calculate button logic
-const calculateBtn = document.querySelector('#calculate');
-calculateBtn.addEventListener('click', () => {
+// Implement equal button logic
+const equalBtn = document.querySelector('#equal');
+equalBtn.addEventListener('click', () => {
   operation.operand2 = Number(displayValue);
   let result = operate(operation.operand1, operation.operand2, operation.operator);
   displayValue = result;
@@ -86,7 +86,10 @@ function operate(a, b, operator) {
 }
 
 function updateDisplay(value) {
-  if (!(value < 10**11)) {
+  if (value === 'Are you ok?') {
+    display.textContent = value;
+  }
+  else if (!(value < 10**11)) {
     display.textContent = '...';
   }
   else {
