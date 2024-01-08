@@ -90,9 +90,10 @@ function updateDisplay(value) {
     display.textContent = '...';
   }
   else {
+    value = Number(value);
+    value = value.toFixed(9).replace(/\.?0+$/, '');
     display.textContent = value;
   }
-
 }
 
 function resetOperation() {
