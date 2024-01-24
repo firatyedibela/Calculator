@@ -23,6 +23,14 @@ button {
   flex: 1;
 }
 
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  opacity: 0.6;
+}
+
 .operator {
   background-color: #FF8F1F;
 }
