@@ -60,6 +60,12 @@ clearBtn.addEventListener('click', () => {
   updateDisplay(displayValue);
 });
 
+// Make delete button interactive
+const deleteBtn = document.querySelector('#delete');
+deleteBtn.addEventListener('click', () => {
+  backspace();
+});
+
 function add(a, b) {
   return a + b;
 }
@@ -94,6 +100,7 @@ function updateDisplay(value) {
   }
   else {
     value = Number(value);
+    // Remove trailing zeros 10.50000 => 10.5
     value = value.toFixed(9).replace(/\.?0+$/, '');
     display.textContent = value;
   }
@@ -103,5 +110,11 @@ function resetOperation() {
   for (let key in operation) {
     operation[key] = null;
   }
+}
+
+function backspace() {
+  // Delete the displayValue string's last character
+  displayValue = displayValue.slice(0, -1);
+  updateDisplay(displayValue);
 }
 

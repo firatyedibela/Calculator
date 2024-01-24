@@ -35,6 +35,10 @@ button:active {
   background-color: #FF8F1F;
 }
 
+#delete {
+  background-color: blueviolet;
+}
+
 #clear {
   background-color: rgb(209, 0, 0);
   color: white;
