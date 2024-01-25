@@ -9,7 +9,7 @@ let displayValue = '0';
 updateDisplay(displayValue);
 
 // Populate the display when clicked numbers
-const numbers = document.querySelectorAll('.number');
+const numbers = Array.from(document.querySelectorAll('.number'));
 numbers.forEach((button) => {
   button.addEventListener('click', (event) => {
     if (displayValue === '0') {
@@ -23,17 +23,28 @@ numbers.forEach((button) => {
   }); 
 });
 
+// Populate the display when clicked dot
+const dot = document.querySelector('#dot');
+dot.addEventListener('click', (event) => {
+  // If already a dot in displayValue, don't do anything
+  // Else add dot
+  if (!displayValue.includes('.')) {
+    displayValue += '.';
+    updateDisplay(displayValue);
+  }
+});
+
 // If an operator clicked earlier, do the calculation, update the operator to be the new clicked button. So one pair of numbers gets evaluated at a time
 const operators = document.querySelectorAll('.operator');
 operators.forEach(operator => {
   operator.addEventListener('click', (event) => { 
     if (operation.operand1 === null) {
-      operation.operand1 = Number(displayValue);       
+      operation.operand1 = Number(displayValue);      
     }
     else if (operation.operator) { 
       operation.operand2 = Number(displayValue);
       let result = operate(operation.operand1, operation.operand2, operation.operator);
-      displayValue = result;
+      displayValue = result.toString();
       operation.operand1 = displayValue;
       updateDisplay(displayValue);
     }
@@ -46,8 +57,9 @@ operators.forEach(operator => {
 const equalBtn = document.querySelector('#equal');
 equalBtn.addEventListener('click', () => {
   operation.operand2 = Number(displayValue);
+  console.log(operation.operand2);
   let result = operate(operation.operand1, operation.operand2, operation.operator);
-  displayValue = result;
+  displayValue = result.toString();
   updateDisplay(displayValue);
   operation.operand1 = displayValue;
 });
@@ -98,12 +110,16 @@ function updateDisplay(value) {
   else if (!(value < 10**11)) {
     display.textContent = '...';
   }
+  else if (value.includes('.')) {
+    display.textContent = value;
+  }
   else {
     value = Number(value);
     // Remove trailing zeros 10.50000 => 10.5
     value = value.toFixed(9).replace(/\.?0+$/, '');
     display.textContent = value;
   }
+  toggleDecimalButton(value);
 }
 
 function resetOperation() {
@@ -118,3 +134,13 @@ function backspace() {
   updateDisplay(displayValue);
 }
 
+//Disable the decimal button if there’s already one in the display
+function toggleDecimalButton(value) {
+  const dotBtn = document.querySelector('#dot');
+  if (value.toString().includes('.')) {
+    dotBtn.disabled = true;
+  }
+  else {
+    dotBtn.disabled = false;
+  }
+}
